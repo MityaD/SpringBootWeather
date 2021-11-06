@@ -7,9 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
 import java.time.LocalDateTime;
-
 
 @Service
 @RequiredArgsConstructor
@@ -25,7 +23,9 @@ public class WeatherServiceImpl implements WeatherService {
 
     @Override
     public Weather findWeatherByCityName(City city){
-        return repository.findByCity(city.name()).orElseGet(() -> findOutWeatherInCityAndSaveInDatabase(city));
+        return repository.findFirstByCityOrderBySaveDateDesc(city.name())
+                .orElseGet(
+                () -> findOutWeatherInCityAndSaveInDatabase(city));
     }
 
     @Override
