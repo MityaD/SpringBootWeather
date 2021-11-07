@@ -27,6 +27,6 @@ public class AllRestController {
                                          @RequestParam(value = "localDateTime", required = false)
                                          @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
                                          LocalDateTime localDateTime) throws NoCityBDException {
-        return weatherService.findFirstByCityOrSaveDate(city, localDateTime);
+        return weatherService.findFirstByCityAndSaveDateOrderBySaveDateDesc(city, localDateTime);
     }
 }

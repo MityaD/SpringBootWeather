@@ -11,5 +11,5 @@ public interface WeatherService {
 
     Weather findOutWeatherInCityAndSaveInDatabase(City city);
 
-    Weather findFirstByCityOrSaveDate(City city, LocalDateTime saveDateTime) throws NoCityBDException;
+    Weather findFirstByCityAndSaveDateOrderBySaveDateDesc(City city, LocalDateTime saveDateTime) throws NoCityBDException;
 }

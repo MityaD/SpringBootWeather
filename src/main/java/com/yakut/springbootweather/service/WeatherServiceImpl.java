@@ -36,8 +36,8 @@ public class WeatherServiceImpl implements WeatherService {
     }
 
     @Override
-    public Weather findFirstByCityOrSaveDate(City city, LocalDateTime saveDateTime) throws NoCityBDException {
-       return repository.findFirstByCityOrSaveDate(city.name(), saveDateTime)
+    public Weather findFirstByCityAndSaveDateOrderBySaveDateDesc(City city, LocalDateTime saveDateTime) throws NoCityBDException {
+       return repository.findFirstByCityAndSaveDateLessThanEqualOrderBySaveDateDesc(city.name(), saveDateTime)
                .orElseThrow(NoCityBDException::new);
     }
 

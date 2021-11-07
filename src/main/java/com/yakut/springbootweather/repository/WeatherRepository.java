@@ -11,5 +11,5 @@ public interface WeatherRepository extends JpaRepository<Weather, Long> {
 
     Optional<Weather> findFirstByCityOrderBySaveDateDesc(String city);
 
-    Optional<Weather> findFirstByCityOrSaveDate(String city, LocalDateTime saveDateTime);
+    Optional<Weather> findFirstByCityAndSaveDateLessThanEqualOrderBySaveDateDesc(String city, LocalDateTime saveDateTime);
 }
