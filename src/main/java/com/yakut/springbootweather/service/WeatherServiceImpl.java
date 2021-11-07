@@ -19,7 +19,7 @@ public class WeatherServiceImpl implements WeatherService {
 
     @Override
     public Weather findOutWeatherInCityAndSaveInDatabase(Cities city) {
-        Weather body = restTemplate.exchange("https://gridforecast.com/api/v1/forecast/" +
+        Weather body = restTemplate.exchange("https://gridforecast.com/api/v1/forecast/" +// todo token и url положи в ямл. причем в две разны переменные
                         city.getCity() + "/202111071200?api_token=gPNf9QeGSArkACoK",
                 HttpMethod.GET, null, Weather.class)
                 .getBody();
