@@ -19,6 +19,7 @@ public class Weather {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id")
     private Long id;
     @Column(name = "save_date")
     private LocalDateTime saveDate;
