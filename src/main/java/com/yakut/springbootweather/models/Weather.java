@@ -22,11 +22,11 @@ public class Weather {
     @Column(name = "id")
     private Long id;
     @Column(name = "save_date")
-    private LocalDateTime saveDate;
+    private LocalDateTime saveDate; //todo навзвание гавно
     @Column(name = "city")
     private String city;
     @Column(name = "temperature")
-    private double t;
+    private double t;//todo давай переменные нормально назовешь, а то не понятно что это по одной букве
     @Column(name = "relative_humidity")
     private double r;
     @Column(name = "surface_pressure")
