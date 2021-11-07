@@ -17,7 +17,7 @@ public class WeatherServiceImpl implements WeatherService {
     private final WeatherRepository repository;
     private final RestTemplate restTemplate;
 
-    @Override
+    @Override//todo если этот метод вызывается только отсюда зачем его делать публичным? и переопределять
     public Weather findOutWeatherInCityAndSaveInDatabase(Cities city) {
         Weather body = restTemplate.exchange("https://gridforecast.com/api/v1/forecast/" +// todo token и url положи в ямл. причем в две разны переменные
                         city.getCity() + "/202111071200?api_token=gPNf9QeGSArkACoK",
