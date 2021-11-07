@@ -1,5 +1,6 @@
 package com.yakut.springbootweather.service;
 
+import com.yakut.springbootweather.exception.NoCityBDException;
 import com.yakut.springbootweather.models.Weather;
 import com.yakut.springbootweather.repository.WeatherRepository;
 import com.yakut.springbootweather.models.City;
@@ -17,21 +18,15 @@ public class WeatherServiceImpl implements WeatherService {
     private final RestTemplate restTemplate;
 
     @Override
-    public void save(Weather weather) {
-        repository.save(weather);
-    }
-
-    @Override
     public Weather findWeatherByCityName(City city){
         return repository.findFirstByCityOrderBySaveDateDesc(city.name())
-                .orElseGet(
-                () -> findOutWeatherInCityAndSaveInDatabase(city));
+                .orElseGet(() -> findOutWeatherInCityAndSaveInDatabase(city));
     }
 
     @Override
     public Weather findOutWeatherInCityAndSaveInDatabase(City city) {
         Weather body = restTemplate.exchange("https://gridforecast.com/api/v1/forecast/" +
-                        city.getCity() + "/202111051200?api_token=gPNf9QeGSArkACoK",
+                        city.getCity() + "/202111071200?api_token=gPNf9QeGSArkACoK",
                 HttpMethod.GET, null, Weather.class)
                 .getBody();
         body.setCity(city.name());
@@ -39,4 +34,12 @@ public class WeatherServiceImpl implements WeatherService {
         repository.save(body);
         return body;
     }
+
+    @Override
+    public Weather findFirstByCityOrSaveDate(City city, LocalDateTime saveDateTime) throws NoCityBDException {
+       return repository.findFirstByCityOrSaveDate(city.name(), saveDateTime)
+               .orElseThrow(NoCityBDException::new);
+    }
+
+
 }
