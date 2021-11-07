@@ -5,9 +5,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component//todo а она тут нужна?...
 @RequiredArgsConstructor
-public class ScheduledFixedRate {
+public class ScheduledFixedRate {//todo гавно название
 
     private final WeatherService weatherService;
 
