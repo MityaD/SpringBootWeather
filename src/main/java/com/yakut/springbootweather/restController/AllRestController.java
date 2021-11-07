@@ -16,9 +16,9 @@ public class AllRestController {
 
     private final WeatherService weatherService;
 
-    @GetMapping("/{city}")// todo метод гет поразумевает что т=ты не будешь менять данные
+    @PutMapping("/{city}")
     public Weather getWeatherCityForDate(@PathVariable Cities city,
-                                         @RequestParam(value = "localDateTime", required = false)//todo зачем явно давать название параметра если переменная называется также?
+                                         @RequestParam(required = false)
                                          @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
                                          LocalDateTime localDateTime) throws NoCityBDException {
         return weatherService.showTheWeatherOfOneCity(city, localDateTime);

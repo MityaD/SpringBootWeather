@@ -1,6 +1,7 @@
 package com.yakut.springbootweather.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,15 +23,19 @@ public class Weather {
     @Column(name = "id")
     private Long id;
     @Column(name = "save_date")
-    private LocalDateTime saveDate; //todo навзвание гавно
+    private LocalDateTime dateTime;
     @Column(name = "city")
     private String city;
     @Column(name = "temperature")
-    private double t;//todo давай переменные нормально назовешь, а то не понятно что это по одной букве
+    @JsonProperty("t")
+    private double temperature;
     @Column(name = "relative_humidity")
-    private double r;
+    @JsonProperty("r")
+    private double relativeHumidity;
     @Column(name = "surface_pressure")
-    private double sp;
+    @JsonProperty("sp")
+    private double surfacePressure;
     @Column(name = "rainfall")
-    private double tp;
+    @JsonProperty("tp")
+    private double rainfall;
 }

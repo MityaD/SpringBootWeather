@@ -8,7 +8,10 @@ spring:
     url: jdbc:postgresql://localhost:5432/postgres
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     show-sql: true
     generate-ddl: true
     database: postgresql
+
+url: https://gridforecast.com/api/v1/forecast/
+dateTimeAndToken: /202111071200?api_token=gPNf9QeGSArkACoK

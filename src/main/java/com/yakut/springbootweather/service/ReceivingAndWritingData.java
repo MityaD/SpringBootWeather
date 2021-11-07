@@ -5,14 +5,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-@Component//todo а она тут нужна?...
+@Component
 @RequiredArgsConstructor
-public class ScheduledFixedRate {//todo гавно название
+public class ReceivingAndWritingData {
 
     private final WeatherService weatherService;
 
     @Scheduled(fixedRate = 300000)
-    public void time() {
+    public void ReceivingAndRecordingWeather() {
         weatherService.findOutWeatherInCityAndSaveInDatabase(Cities.MOSCOW);
         weatherService.findOutWeatherInCityAndSaveInDatabase(Cities.MINSK);
         weatherService.findOutWeatherInCityAndSaveInDatabase(Cities.ST_PETERSBURG);

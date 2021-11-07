@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 public interface WeatherService {
 
-    Weather findOutWeatherInCityAndSaveInDatabase(Cities city);
-
     Weather showTheWeatherOfOneCity(Cities city, LocalDateTime saveDateTime) throws NoCityBDException;
+
+    Weather findOutWeatherInCityAndSaveInDatabase(Cities city);
 }
