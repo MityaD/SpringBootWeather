@@ -1,0 +1,25 @@
+version: "3.1"
+services:
+
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: yakushik
+      POSTGRES_USER: yakushik
+    volumes:
+      - apps-volumes:/var/lib/postgresql/data
+      - ./create_docker_db.sh:/docker-entrypoint-initdb.d/create_CREATE SEQUENCE hibernate_sequence START 1;docker_db.sh
+
+  app:
+    image: spring-boot
+    build: ./
+    ports:
+      - "8082:8082"
+    depends_on:
+      - db
+
+volumes:
+  apps-volumes:
+
